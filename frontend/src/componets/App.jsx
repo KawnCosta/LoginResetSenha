@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useState } from "react";
+import Login from '../pages/Login.jsx';
+import RedefinirSenha from '../pages/RedefinirSenha.jsx';
 
-import Login from './pages/Login';
-import redefinirSenha from './pages/redefinirSenha';
+// Componente principal que controla a navegação entre as páginas
 
-function App() {
-    const []
+export default function App() {
+    const [TelaAtual, setTelaAtual] = useState('login');
+
+    return (
+        <div className="app-container">
+            {TelaAtual === 'login' ? (
+                <Login onRedefinir={() => setTelaAtual('redefinir')} />
+            ) : (
+                <RedefinirSenha onVoltar={() => setTelaAtual('login')} />
+            )}
+        </div>
+    );
 }
